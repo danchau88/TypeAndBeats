@@ -35,8 +35,8 @@ body {
   border: 1px solid;
   background-color: #1D3354;
   border-radius: 10px;
-  width: 90%;
-  height: 60%;
+  width: 86%;
+  height: 65%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,6 +45,9 @@ body {
 
 .genre {
   padding-top: 10px;
+  color: burlywood;
+  font-size: 25px;
+  padding-bottom: 10px;
 }
 
 .game-content {
@@ -85,4 +88,8 @@ body {
 footer {
   padding-top: 10px;
   bottom: 5;
+}
+
+#time-left {
+  color: white;
 }
