@@ -3,11 +3,14 @@ const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input');
 const timeLeftDisplay = document.getElementById('time-left');
 
-
+let timer;
 function countDown () {
   let timeLeft = 8;
 
-  let timer = setInterval(() => {
+  // this will take away any previous existing timers (resetting)
+  if (timer) {clearInterval(timer)};
+
+  timer = setInterval(() => {
     if (timeLeft <= 0) {
       clearInterval(timer)
     } 
@@ -16,12 +19,21 @@ function countDown () {
   }, 1000)
 }
 
+// for the first input to start timer
+// let firstInput = true; --> for first input after everyword
+// this is for after every word
+let firstWord = true;
+
 // Input match checker
 answerInput.addEventListener('input', () => {
   const arrWord = wordDisplay.querySelectorAll('span');
   const arrValue = answerInput.value.split('');
-  // starts countdown
-  countDown();
+
+  //starts countDown
+  if (firstWord) {
+    firstWord = false;
+    countDown();
+  }
 
   let correct = true;
   arrWord.forEach((charSpan, index) => {
@@ -42,7 +54,11 @@ answerInput.addEventListener('input', () => {
     }
   })
 
-  if (correct) renderNextWord()
+  if (correct) {
+    // resets countdown
+    countDown()
+    renderNextWord()
+  }
 })
 
 // RandomWord API Getter
