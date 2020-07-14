@@ -1,3 +1,88 @@
-title {
-  
+/* RESET */
+p {
+  margin: 0;
+}
+/* RESET END */
+
+header {
+  font-family: 'Exo', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: blanchedalmond;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #501537;
+  font-family: 'Signika', sans-serif;
+  height: 100vh;
+}
+
+.basic-rules {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #3E4E50;
+  font-weight: bold;
+}
+
+.game-container {
+  border: 1px solid;
+  background-color: #1D3354;
+  border-radius: 10px;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.genre {
+  padding-top: 10px;
+}
+
+.game-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkslateblue;
+  height: 75%;
+  width: 85%;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.game-display {
+  width: 90%;
+  min-height: 75%;
+  font-size: 40px;
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
+.answer-input {
+  font-size: 20px;
+  height: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.correct {
+  color: #B2FFD6;
+}
+
+.wrong {
+  color: #9B2915;
+}
+
+footer {
+  padding-top: 10px;
+  bottom: 5;
 }
