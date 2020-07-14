@@ -2,6 +2,15 @@ const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?number=1
 const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input');
 const timeLeftDisplay = document.getElementById('time-left');
+const audio_info = document.getElementById('audio1');
+
+function playMusic() {
+  audio_info.play();
+};
+
+function stopMusic() {
+  audio_info.pause();
+}
 
 let timer;
 function countDown () {
@@ -12,6 +21,8 @@ function countDown () {
 
   timer = setInterval(() => {
     if (timeLeft <= 0) {
+      stopMusic();
+      alert("You Lose, Try Again!")
       clearInterval(timer)
     } 
     timeLeftDisplay.innerHTML = timeLeft
@@ -19,8 +30,8 @@ function countDown () {
   }, 1000)
 }
 
-// for the first input to start timer
-// let firstInput = true; --> for first input after everyword
+// for the first input to start timer --> for first input after everyword
+let firstInput = true; 
 // this is for after every word
 let firstWord = true;
 
@@ -29,6 +40,11 @@ answerInput.addEventListener('input', () => {
   const arrWord = wordDisplay.querySelectorAll('span');
   const arrValue = answerInput.value.split('');
 
+  // starts music
+  if (firstInput) {
+    firstInput = false;
+    playMusic();
+  }
   //starts countDown
   if (firstWord) {
     firstWord = false;
@@ -56,6 +72,7 @@ answerInput.addEventListener('input', () => {
 
   if (correct) {
     // resets countdown
+    playMusic()
     countDown()
     renderNextWord()
   }
