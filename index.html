@@ -24,13 +24,20 @@
     <h2> Type Them Beats</h1>
   </header>
   <section class="basic-rules">
-    <label for="basic-rules">Basic Rules:
+    <div class="levels">
+      <button id="easy" onclick="easyMode()">EASY</button>
+      <button id="hard" onclick="hardMode()">HARD</button>
+      <button id="master" onclick="masterMode()">MASTER</button>
+    </div>
+    <div>
+    <label for="basic-rules">Basic Rules:</label>
       <ul>
         <li>Type the word present correctly before the timer ends.</li> 
         <li>Survive 100 seconds to see your score. </li>
-        <li>Hone your typing skills, good luck!. </li>
+        <li>Easy(default): 10sec | Hard: 7sec | Master: 5sec</li>
+        <li>Hone your typing skills and get as many words as you can, good luck!. </li>
       </ul>
-    </label>
+    </div>
   </section>
   <section class="game-container">
     <div class="score">
@@ -38,8 +45,14 @@
       <h3>Time: <span id="score-time">0</span></h3>
     </div>
 
-    <div class="genre">Genre/Theme of Music
+    <div class="genre" id="mode-display">
       <audio id="audio1" loop="loop" preload="none">
+        <source src="./music/The Raindrop Flower (Jazz Ver.)｜메이플스토리 (MapleStory) OST _ Jazz of Maple (192  kbps)(abdwap2.com).mp3" type="audio/mpeg">
+      </audio>
+      <audio id="audio2" loop="loop" preload="none">
+        <source src="./music/4.21 Let the Battles Begin! -REMAKE-.mp3" type="audio/mpeg">
+      </audio>
+      <audio id="audio3" loop="loop" preload="none">
         <source src="./music/4.09 The Most Muscular.mp3" type="audio/mpeg">
       </audio>
     </div>

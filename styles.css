@@ -18,13 +18,51 @@ body {
   height: 100vh;
 }
 
+.levels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.levels button {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+  margin-bottom: 5px; 
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+#easy:hover {
+  color: forestgreen;
+  background-color: darkseagreen;
+}
+
+#hard:hover {
+  color: #9B2915;
+  background-color: gold;
+}
+
+#master:hover {
+  color: mediumorchid;
+  background-color: darkred;
+}
+
 .basic-rules {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   margin-bottom: 10px;
   color: goldenrod;
   font-weight: bold;
+  width: 85%;
+}
+
+.basic-rules ul li {
+  padding: 2px;
 }
 
 .game-container {
@@ -107,6 +145,11 @@ footer {
   padding-left: 10px;
   font-size: 20px;
   font-family: 'Rajdhani', sans-serif;
+}
+
+/* Difficulty toggle */
+.selected {
+  background-color: skyblue;
 }
 
 /* Contact Info */

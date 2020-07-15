@@ -2,19 +2,51 @@ const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?number=1
 const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input');
 const timeLeftDisplay = document.getElementById('time-left');
-const audio_info = document.getElementById('audio1');
+const audio_info1 = document.getElementById('audio1');
+const audio_info2 = document.getElementById('audio2');
+const audio_info3 = document.getElementById('audio3');
 const timeScoreDisplay = document.getElementById('score-time'); 
 const wordScoreDisplay = document.getElementById('score-words'); 
+const easy = document.getElementById('easy');
+const hard = document.getElementById('hard');
+const master = document.getElementById('master');
+const modeDisplay = document.getElementById('mode-display');
 
-function playMusic() {
-  audio_info.play();
+// changing global Variables
+let timeLeft;
+let currentTime = 0;
+let score = 0;
+
+//functions
+function play1() {
+  audio_info1.play();
 };
 
-function stopMusic() {
-  audio_info.pause();
+function stop1() {
+  audio_info1.pause();
+};
+
+function play2() {
+  audio_info2.play();
+};
+
+function stop2() {
+  audio_info2.pause();
+};
+
+function play3() {
+  audio_info3.play();
+};
+
+function stop3() {
+  audio_info3.pause();
+};
+
+function newGame() {
+  window.location.reload();
 }
 
-let currentTime = 0;
+
 // Total Time Score
 function countStart() {
   counter = setInterval(() => {
@@ -23,16 +55,59 @@ function countStart() {
   }, 1000)
 }
 
-let score = 0;
 // Total Words Score
 function scoreIncrease() {
   wordScoreDisplay.innerHTML = score;
   score++;
 }
 
+// Modes
+function easyMode() {
+  modeDisplay.innerText = 'Easy';
+  easy.className = 'selected';
+  hard.className = '';
+  master.className = '';
+  timeLeft = 10;
+}
+
+function hardMode() {
+  modeDisplay.innerText = 'Hard';
+  easy.className = '';
+  hard.className = 'selected';
+  master.className = '';
+  timeLeft = 7;
+}
+
+function masterMode() {
+  modeDisplay.innerText = 'Master';
+  easy.className = '';
+  hard.className = '';
+  master.className = 'selected';
+  timeLeft = 5;
+}
+
+function playMusic() {
+  if (easy.className === 'selected') {
+    play1();
+  } else if (hard.className === 'selected') {
+    play2();
+  } else {
+    play3();
+  }
+}
+
+function stopMusic() {
+  if (easy.className === 'selected') {
+    stop1();
+  } else if (hard.className === 'selected') {
+    stop2();
+  } else {
+    stop3();
+  }
+}
+
 let timer;
 function countDown () {
-  let timeLeft = 8;
 
   // this will take away any previous existing timers (resetting)
   if (timer) {clearInterval(timer)};
