@@ -17,7 +17,6 @@ function stopMusic() {
 let currentTime = 0;
 // Total Time Score
 function countStart() {
-  // if (timer) {}
   counter = setInterval(() => {
     timeScoreDisplay.innerHTML = currentTime
     currentTime++;
@@ -41,7 +40,7 @@ function countDown () {
   timer = setInterval(() => {
     if (timeLeft <= 0) {
       stopMusic();
-      alert(`Score: ${score}, Time: ${currentTime}. Try again!`)
+      alert(`Try again to finish and get your score!`)
       clearInterval(timer)
       currentTime = 0
       score = 0
@@ -56,6 +55,14 @@ let firstInput = true;
 // this is for after every word
 let firstWord = true;
 
+//You Win Message
+function youWin(){
+  win = setInterval(() => {
+    alert(`You made it! Score: ${score}.`)
+  }, 100000);
+  stopMusic();
+}
+
 // Input match checker
 answerInput.addEventListener('input', () => {
   const arrWord = wordDisplay.querySelectorAll('span');
@@ -65,6 +72,7 @@ answerInput.addEventListener('input', () => {
   if (firstInput) {
     firstInput = false;
     playMusic();
+    youWin();
   }
 
   //starts countDown
