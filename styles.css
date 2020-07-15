@@ -43,8 +43,17 @@ body {
   flex-direction: column;
 }
 
+.score {
+  color: aquamarine;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  display: flex;
+  width: 85%;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .genre {
-  padding-top: 10px;
   color: burlywood;
   font-size: 25px;
   padding-bottom: 10px;
@@ -54,11 +63,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: darkslateblue;
+  /* background-color: darkslateblue; */
+  background-color: #231F20;
   height: 75%;
   width: 85%;
   border: 1px solid black;
   border-radius: 15px;
+}
+
+.game-content h4 {
+  color: darkgoldenrod;
 }
 
 .game-display {

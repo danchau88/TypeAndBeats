@@ -3,6 +3,8 @@ const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input');
 const timeLeftDisplay = document.getElementById('time-left');
 const audio_info = document.getElementById('audio1');
+const timeScoreDisplay = document.getElementById('score-time'); 
+const wordScoreDisplay = document.getElementById('score-words'); 
 
 function playMusic() {
   audio_info.play();
@@ -10,6 +12,23 @@ function playMusic() {
 
 function stopMusic() {
   audio_info.pause();
+}
+
+let currentTime = 0;
+// Total Time Score
+function countStart() {
+  // if (timer) {}
+  counter = setInterval(() => {
+    timeScoreDisplay.innerHTML = currentTime
+    currentTime++;
+  }, 1000)
+}
+
+let score = 0;
+// Total Words Score
+function scoreIncrease() {
+  wordScoreDisplay.innerHTML = score;
+  score++;
 }
 
 let timer;
@@ -22,8 +41,10 @@ function countDown () {
   timer = setInterval(() => {
     if (timeLeft <= 0) {
       stopMusic();
-      alert("You Lose, Try Again!")
+      alert(`Score: ${score}, Time: ${currentTime}. Try again!`)
       clearInterval(timer)
+      currentTime = 0
+      score = 0
     } 
     timeLeftDisplay.innerHTML = timeLeft
     timeLeft -= 1
@@ -45,9 +66,11 @@ answerInput.addEventListener('input', () => {
     firstInput = false;
     playMusic();
   }
+
   //starts countDown
   if (firstWord) {
     firstWord = false;
+    countStart();
     countDown();
   }
 
@@ -74,6 +97,7 @@ answerInput.addEventListener('input', () => {
     // resets countdown
     playMusic()
     countDown()
+    scoreIncrease()
     renderNextWord()
   }
 })
