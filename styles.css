@@ -99,6 +99,7 @@ body {
 footer {
   padding-top: 10px;
   bottom: 5;
+  color: #ABC8C0;
 }
 
 #time-left {
@@ -109,3 +110,24 @@ footer {
 }
 
 /* Contact Info */
+.contact-info {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contact-info label {
+  margin-right: 5px;
+}
+
+.fa-github-square {
+  font-size: 30px;
+  color: #9EE493;
+  margin: 8px;
+}
+
+.fa-linkedin {
+  font-size: 30px;
+  color: #9EE493;
+  margin: 8px;
+}
