@@ -59,6 +59,9 @@ body {
   color: goldenrod;
   font-weight: bold;
   width: 85%;
+  padding: 5px;
+  background-color: #1D3354;
+  border-radius: 10px;
 }
 
 .basic-rules ul li {
@@ -67,7 +70,8 @@ body {
 
 .game-container {
   border: 1px solid;
-  background-color: #1D3354;
+  /* background-color: #1D3354; */
+  background-color: #231F20;
   border-radius: 10px;
   width: 86%;
   height: 65%;
@@ -111,7 +115,7 @@ body {
 
 .game-display {
   width: 90%;
-  min-height: 75%;
+  height: 75%;
   font-size: 40px;
   color: cornflowerblue;
   font-weight: bold;
