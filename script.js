@@ -11,47 +11,12 @@ const easy = document.getElementById('easy');
 const hard = document.getElementById('hard');
 const master = document.getElementById('master');
 const modeDisplay = document.getElementById('mode-display');
-// const canvas = document.getElementById('visualizer');
 
 // changing global Variables
 let timeLeft;
 let currentTime = 0;
 let score = 0;
 
-//Visualizer Functions
-// function seeBeats() {
-//   let context = canvas.getContext("2d");
-//   let centerX = canvas.width/2;
-//   let centerY = canvas.height/2;
-//   let radius = 60;
-
-//   let audioContext = new AudioContext();
-//   let analyzer = audioContext.createAnalyser();
-//   let bufferLength = analyzer.frequencyBinCount;
-//   let frequencyArr = new Uint8Array(bufferLength);
-//   // let source = audioContext.createMediaElementSource(audio_info1);
-//   analyzer.getByteFrequencyData(frequencyArr)
-//   // source.connect(analyzer);
-//   analyzer.connect(audioContext.destination);
-
-//   for(let i = 0; i < bufferLength; i++) {
-//     let x1 = centerX + Math.cos(i) * radius;
-//     let y1 = centerY + Math.sin(i) * radius;
-//     let x2 = centerX + Math.cos(i) * (radius + i);
-//     let y2 = centerY + Math.sin(i) * (radius + i);
-//     let lineColor = "rgb(" +i+50 + "," + i+20 + "," + i+1 + ")";
-//     context.strokeStyle = lineColor;
-//     context.beginPath();
-//     context.moveTo(x1, y1);
-//     context.lineTo(x2, y2);
-//     context.stroke();
-//     // Circle
-//     context.beginPath();
-//     context.arc(centerX, centerY, radius, 0, 2*Math.PI);
-//     context.stroke();
-//   }
-//   requestAnimationFrame(seeBeats);
-// }
 
 // Music Play functions
 function play1() {
@@ -85,6 +50,18 @@ function newGame() {
   window.location.reload();
 }
 
+// Timer Bar
+let innerDivBar = document.getElementById('timebar-left');
+let divTimerBar = document.getElementById('time-bar'); 
+function startBarCount() {
+  let startTimer = setInterval(barCount, 10);
+  function barCount() {
+    if (innerDivBar.clientWidth < divTimerBar.clientWidth) {
+      innerDivBar.style.width = divTimerBar.clientWidth
+    }
+  }
+
+};
 
 // Total Time Score
 function countStart() {
@@ -126,36 +103,35 @@ function masterMode() {
 }
 
 function playMusic() {
-  if (easy.className === 'selected') {
-    play1();
+  if (master.className === 'selected') {
+    play3();
   } else if (hard.className === 'selected') {
     play2();
   } else {
-    play3();
+    play1();
   }
 }
 
 function stopMusic() {
-  if (easy.className === 'selected') {
-    stop1();
+  if (master.className === 'selected') {
+    stop3();
   } else if (hard.className === 'selected') {
     stop2();
   } else {
-    stop3();
+    stop1();
   }
 }
 
 let timer;
 function countDown () {
-
   // this will take away any previous existing timers (resetting)
   if (timer) {
-    if (easy.className === "selected") {
-      timeLeft = 10
+    if (master.className === "selected") {
+      timeLeft = 5
     } else if (hard.className === "selected") {
       timeLeft = 7
     } else {
-      timeLeft = 5
+      timeLeft = 10
     }
     clearInterval(timer)
   };
@@ -198,7 +174,6 @@ answerInput.addEventListener('input', () => {
   if (firstInput) {
     firstInput = false;
     playMusic();
-    // seeBeats();
     youWin();
   }
 
@@ -257,3 +232,103 @@ async function renderNextWord() {
 
 // Here to make sure that an initial word renders on reload
 renderNextWord();
+
+// IGNORE THIS
+// My lost attempt Audio Visualizer
+// Sound Visualizer variables
+// var audio, canvas, context, audioctx, analyser, oscillator, freqArr, barHeight, source;
+// var bigBars = 0;
+// var colorStyle = 0;
+// var pastIndex = 900;
+// var WIDTH = 600;
+// var HEIGHT = 180;
+// var INTERVAL = 128;//256;
+// var SAMPLES = 2048;//4096;//1024;//512;//2048; //this is the main thing to change right now
+// var r = 0;
+// var g = 0;
+// var b = 255;
+// var x = 0;
+
+//Visualizer Functions
+// function initialize(){
+//   canvas = document.getElementById("cnv1"); //drawing the canvas
+//   context = canvas.getContext("2d");
+//   // audio = document.getElementById("audio1");
+//   // audio.volume = .5;
+//   //audio.src = document.getElementById("audioFile");
+//   console.log(audio_info1);
+//   audio_info1.source = URL.createObjectURL(); //this is to make url for audio (CORS bug)
+//   console.log(audio_info1);
+  
+//   audioctx = audioctx || new AudioContext(); //setting up audio analyzer to get frequency info
+//   analyser = audioctx.createAnalyser();
+//   analyser.fftSize = SAMPLES;
+  
+//   oscillator = audioctx.createOscillator();
+//   oscillator.connect(audioctx.destination);
+
+//   // source = audioctx.createMediaElementSource(audio_info1);
+//   source = source || audioctx.createMediaElementSource(audio_info1);   
+//   source.connect(analyser);
+//   source.connect(audioctx.destination);
+
+//   freqArr = new Uint8Array(analyser.frequencyBinCount);
+
+//   barHeight = HEIGHT;
+
+//   requestAnimationFrame(draw);
+// }
+
+/*function maxIndex(arr){ //finds the highest-numbered index with a nonzero value
+  var maxIndex = 0;
+  for(var i = 1; i < arr.length; i++){
+      if(arr[i] != 0){
+          maxIndex = i;
+      }
+  }
+  return maxIndex;
+}*/
+
+// function draw(){
+//   if(!audio_info1.paused){
+//       bigBars = 0;
+//       r = 0;
+//       g = 0;
+//       b = 255;
+//       x = 0;
+//       context.clearRect(0,0,WIDTH, HEIGHT);
+//       analyser.getByteFrequencyData(freqArr);
+//       for(var i = 0; i < INTERVAL; i++){
+//         if(/*i <= 50 &&*/ barHeight >= (240 /* currVol*/)){
+//             bigBars++;
+//         }
+//         //max = 900; //default placeholder
+//         var num = i;
+//         barHeight = ((freqArr[num] - 128) * 2) + 2;
+//         if(barHeight <= 1){
+//             barHeight = 2;
+//         }
+        
+//         r = r + 10; //this is for the color spectrum
+//         if(r > 255){
+//             r = 255;
+//         }
+//         g = g + 1;
+//         if(g > 255){
+//             g = 255;
+//         }
+//         b = b - 2;
+//         if(b < 0){
+//         b = 0;
+//         }
+        
+//         if(colorStyle === 0){
+//             context.fillStyle = "rgb(" + r + "," + g + "," + b + ")"; //rgb color cycle 
+//         }
+
+//         context.fillRect(x, HEIGHT - barHeight, (WIDTH/INTERVAL) - 1 , barHeight);
+//         x = x + (WIDTH/INTERVAL);
+//       }
+//   }
+//   requestAnimationFrame(draw);
+// }

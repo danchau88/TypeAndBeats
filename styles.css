@@ -105,7 +105,7 @@ body {
   background-color: #231F20;
   height: 75%;
   width: 85%;
-  border: 1px solid black;
+  border: 1px solid transparent;
   border-radius: 15px;
 }
 
@@ -119,6 +119,9 @@ body {
   font-size: 40px;
   color: cornflowerblue;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .answer-input {
@@ -156,6 +159,25 @@ footer {
   background-color: skyblue;
 }
 
+/* Timer Bar */
+#timer-bar {
+  width: 70%;
+  height: 120px;
+  background: linear-gradient(to right, cornflowerblue, plum, #9EE493);
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#timebar-left {
+  height: 120px;
+  border-radius: 10px;
+  background-color: dimgrey;
+}
+
 /* Contact Info */
 .contact-info {
   display: flex;
@@ -179,7 +201,15 @@ footer {
   margin: 8px;
 }
 
+
 /* Canvas */
-canvas {
-  background-color: transparent;
-}
+/* .visualizer{
+  width: 600px;
+  height: 180px;
+  padding: 0;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} */
