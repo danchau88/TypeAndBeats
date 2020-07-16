@@ -13,7 +13,7 @@ const master = document.getElementById('master');
 const modeDisplay = document.getElementById('mode-display');
 
 // changing global Variables
-let timeLeft;
+let timeLeft = 10;
 let currentTime = 0;
 let score = 0;
 
@@ -52,15 +52,30 @@ function newGame() {
 
 // Timer Bar
 let innerDivBar = document.getElementById('timebar-left');
-let divTimerBar = document.getElementById('time-bar'); 
+let divTimerBar = document.getElementById('timer-bar');
+// Different lengths for difficulty settings
+
+let startTimer; 
+let amountTime;
 function startBarCount() {
-  let startTimer = setInterval(barCount, 10);
+  if (master.className === 'selected') {
+    amountTime = 11;
+  } else if (hard.className === 'selected') {
+    amountTime = 17;
+  } else {
+    amountTime = 22;
+  }
+  innerDivBar.style.width = 0
+  startTimer = setInterval(barCount, amountTime);
   function barCount() {
     if (innerDivBar.clientWidth < divTimerBar.clientWidth) {
-      innerDivBar.style.width = divTimerBar.clientWidth
+      innerDivBar.style.width = innerDivBar.clientWidth + 1 + "px"
+    } else {
+      innerDivBar.style.width = divTimerBar.clientWidth + "px"
+      clearInterval(startTimer)
+      innerDivBar.style.width = 0
     }
   }
-
 };
 
 // Total Time Score
@@ -173,6 +188,8 @@ answerInput.addEventListener('input', () => {
   // starts music
   if (firstInput) {
     firstInput = false;
+    countDown();
+    startBarCount();
     playMusic();
     youWin();
   }
@@ -207,6 +224,7 @@ answerInput.addEventListener('input', () => {
     // resets countdown
     countDown()
     scoreIncrease()
+    startBarCount()
     playMusic()
     renderNextWord()
   }

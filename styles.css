@@ -161,18 +161,19 @@ footer {
 
 /* Timer Bar */
 #timer-bar {
-  width: 70%;
+  width: 500px;
   height: 120px;
   background: linear-gradient(to right, cornflowerblue, plum, #9EE493);
   border-radius: 10px;
   margin: 5px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 #timebar-left {
+  width: 0;
   height: 120px;
   border-radius: 10px;
   background-color: dimgrey;
