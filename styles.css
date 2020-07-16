@@ -174,3 +174,8 @@ footer {
   color: #9EE493;
   margin: 8px;
 }
+
+/* Canvas */
+canvas {
+  background-color: transparent;
+}

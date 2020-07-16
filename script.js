@@ -11,14 +11,51 @@ const easy = document.getElementById('easy');
 const hard = document.getElementById('hard');
 const master = document.getElementById('master');
 const modeDisplay = document.getElementById('mode-display');
+const canvas = document.getElementById('visualizer');
 
 // changing global Variables
 let timeLeft;
 let currentTime = 0;
 let score = 0;
 
-//functions
+//Visualizer Functions
+function seeBeats() {
+  let context = canvas.getContext("2d");
+  let centerX = canvas.width/2;
+  let centerY = canvas.height/2;
+  let radius = 60;
+
+  let audioContext = new AudioContext();
+  let analyzer = audioContext.createAnalyser();
+  let bufferLength = analyzer.frequencyBinCount;
+  let frequencyArr = new Uint8Array(bufferLength);
+  // let source = audioContext.createMediaElementSource(audio_info1);
+  analyzer.getByteFrequencyData(frequencyArr)
+  // source.connect(analyzer);
+  analyzer.connect(audioContext.destination);
+
+  for(let i = 0; i < bufferLength; i++) {
+    let x1 = centerX + Math.cos(i) * radius;
+    let y1 = centerY + Math.sin(i) * radius;
+    let x2 = centerX + Math.cos(i) * (radius + i);
+    let y2 = centerY + Math.sin(i) * (radius + i);
+    let lineColor = "rgb(" +i+50 + "," + i+20 + "," + i+1 + ")";
+    context.strokeStyle = lineColor;
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    // Circle
+    context.beginPath();
+    context.arc(centerX, centerY, radius, 0, 2*Math.PI);
+    context.stroke();
+  }
+  requestAnimationFrame(seeBeats);
+}
+
+// Music Play functions
 function play1() {
+  audio_info1.volume = 0.7;
   audio_info1.play();
 };
 
@@ -27,6 +64,7 @@ function stop1() {
 };
 
 function play2() {
+  audio_info2.volume = 0.7;
   audio_info2.play();
 };
 
@@ -35,6 +73,7 @@ function stop2() {
 };
 
 function play3() {
+  audio_info3.volume = 0.7;
   audio_info3.play();
 };
 
@@ -110,7 +149,16 @@ let timer;
 function countDown () {
 
   // this will take away any previous existing timers (resetting)
-  if (timer) {clearInterval(timer)};
+  if (timer) {
+    if (easy.className === "selected") {
+      timeLeft = 10
+    } else if (hard.className === "selected") {
+      timeLeft = 7
+    } else {
+      timeLeft = 5
+    }
+    clearInterval(timer)
+  };
 
   timer = setInterval(() => {
     if (timeLeft <= 0) {
@@ -147,6 +195,7 @@ answerInput.addEventListener('input', () => {
   if (firstInput) {
     firstInput = false;
     playMusic();
+    seeBeats();
     youWin();
   }
 
@@ -176,11 +225,12 @@ answerInput.addEventListener('input', () => {
     }
   })
 
+  //! Problem with time not resetting properly!
   if (correct) {
     // resets countdown
-    playMusic()
     countDown()
     scoreIncrease()
+    playMusic()
     renderNextWord()
   }
 })
