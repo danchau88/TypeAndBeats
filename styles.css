@@ -176,10 +176,6 @@ footer {
   background: linear-gradient(to right, cornflowerblue, plum, #9EE493);
   border-radius: 10px;
   margin: 5px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 }
 
 #timebar-left {
@@ -213,16 +209,3 @@ footer {
   color: #9EE493;
   margin: 8px;
 }
-
-
-/* Canvas */
-/* .visualizer{
-  width: 600px;
-  height: 180px;
-  padding: 0;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-} */
