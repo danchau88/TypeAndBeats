@@ -17,7 +17,7 @@ const muteButton = document.getElementById('sound-icon');
 
 // changing global Variables
 let timeLeft = 10;
-let currentTime = 0;
+let totalTimeLeft = 100;
 let score = 0;
 
 
@@ -114,8 +114,9 @@ function startBarCount() {
 // Total Time Score
 function countStart() {
   counter = setInterval(() => {
-    currentTime++;
-    timeScoreDisplay.innerHTML = currentTime
+    totalTimeLeft--;
+    timeScoreDisplay.innerHTML = totalTimeLeft
+    if (totalTimeLeft < 0) youWin();
   }, 1000)
 }
 
@@ -153,11 +154,15 @@ function masterMode() {
 function minuteMode() {
   minute.className = 'selected';
   regular.className = '';
+  totalTimeLeft = 60;
+  timeScoreDisplay.innerHTML = totalTimeLeft;
 }
 
 function regularMode() {
   minute.className = '';
   regular.className = 'selected';
+  totalTimeLeft = 100;
+  timeScoreDisplay.innerHTML = totalTimeLeft;
 }
 
 // Filter Songs Played
@@ -200,7 +205,7 @@ function countDown () {
       stopMusic();
       alert(`Try again to finish and get your score!`)
       clearInterval(timer)
-      currentTime = 0
+      minute.className === 'selected' ? totalTimeLeft = 60 : totalTimeLeft = 100
       score = 0
       newGame();
     } 
@@ -215,21 +220,10 @@ let firstInput = true;
 let firstWord = true;
 
 //You Win Message
-let win;
-function youWin(){
-  if (minute.className === 'selected') {
-    win = setInterval(() => {
-      stopMusic();
-      alert(`You made it! Score: ${score}.`);
-      newGame();
-    }, 60000);
-  } else {
-    win = setInterval(() => {
-      stopMusic();
-      alert(`You made it! Score: ${score}.`);
-      newGame();
-    }, 100000);
-  }
+function youWin() {
+  stopMusic();
+  alert(`You made it! Score: ${score}.`);
+  newGame();
 }
 
 // Input match checker
@@ -243,7 +237,7 @@ answerInput.addEventListener('input', () => {
     countDown();
     startBarCount();
     playMusic();
-    youWin();
+    // youWin();
   }
 
   //starts countDown
