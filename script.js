@@ -242,6 +242,7 @@ answerInput.addEventListener('input', () => {
   }
 })
 
+let bufferWord;
 // RandomWord API Getter
 const getRandomWord = () => {
   return fetch(RANDOM_WORD_API_URL)
@@ -250,7 +251,8 @@ const getRandomWord = () => {
 };
 
 async function renderNextWord() {
-  const word = await getRandomWord();
+  // bufferWord used to fix lag time
+  const word = bufferWord || await getRandomWord();
   wordDisplay.innerHTML = '';
   word.split('').forEach(element => {
     const character = document.createElement('span');
@@ -258,6 +260,8 @@ async function renderNextWord() {
     wordDisplay.appendChild(character);
   });
   answerInput.value = null;
+  // this is here to preload next word ahead of time
+  bufferWord = await getRandomWord();
 };
 
 // Here to make sure that an initial word renders on reload
