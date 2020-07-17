@@ -1,6 +1,8 @@
 # TypeThemBeats
 A fun short mini-game that tests your typing speed prowess!
 
+Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
+
 #### Tools Used:
 * Language: Javascript
 * HTML5 and CSS
