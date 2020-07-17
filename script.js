@@ -299,7 +299,10 @@ async function renderNextWord() {
   answerInput.value = null;
   // this is here to preload next word ahead of time
   bufferWord = await getRandomWord();
-  if (bufferWord === word) { bufferWord = await getRandomWord() };
+  //double checks for duplicates
+  while (bufferWord === word) {
+    bufferWord = await getRandomWord() 
+  };
 };
 
 // Here to make sure that an initial word renders on reload
