@@ -10,11 +10,15 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 ### Basic Rules:
 * Type the word present correctly before the timer ends.
   * Timer resets every correct word.
-* Pick a Level (default is Easy): 
-  * Easy(default): 10sec
-  * Hard: 7sec 
-  * Master: 5sec
-* Survive 100 seconds to see your score.
+* Pick a Level and Duration (default is Easy and 100 seconds):
+  * Levels:
+    * Easy(default): 10sec
+    * Hard: 7sec 
+    * Master: 5sec
+  * Durations:
+    * Regular(default): 100 sec
+    * Minute: 60 sec
+* Survive 100 or 60 seconds to see your score.
 * Starts whenever you start typing in the "Type here to start" box.
 * Hone your typing skills and get as many words as you can, good luck!
 * **Note**: Don't worry about pressing enter when finishing the word, it should change automatically.
