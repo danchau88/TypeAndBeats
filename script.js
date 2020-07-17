@@ -112,12 +112,23 @@ function startBarCount() {
 };
 
 // Total Time Score
+let counter;
 function countStart() {
   counter = setInterval(() => {
     totalTimeLeft--;
     timeScoreDisplay.innerHTML = totalTimeLeft
-    if (totalTimeLeft < 0) youWin();
+    if (totalTimeLeft < 0) {
+      clearInterval(counter);
+      youWin();
+    };
   }, 1000)
+}
+
+//You Win Function
+function youWin() {
+  stopMusic();
+  alert(`You made it! Score: ${score}.`);
+  newGame();
 }
 
 // Total Words Score
@@ -216,15 +227,8 @@ function countDown () {
 
 // for the first input to start timer --> for first input after everyword
 let firstInput = true; 
-// this is for after every word
-let firstWord = true;
-
-//You Win Message
-function youWin() {
-  stopMusic();
-  alert(`You made it! Score: ${score}.`);
-  newGame();
-}
+// this is for after every word (not needed)
+// let firstWord = true;
 
 // Input match checker
 answerInput.addEventListener('input', () => {
@@ -236,16 +240,16 @@ answerInput.addEventListener('input', () => {
     firstInput = false;
     countDown();
     startBarCount();
+    countStart();
     playMusic();
-    // youWin();
   }
 
   //starts countDown
-  if (firstWord) {
-    firstWord = false;
-    countStart();
-    countDown();
-  }
+  // if (firstWord) {
+  //   firstWord = false;
+  //   countStart();
+  //   countDown();
+  // }
 
   let correct = true;
   arrWord.forEach((charSpan, index) => {
@@ -271,7 +275,6 @@ answerInput.addEventListener('input', () => {
     countDown()
     scoreIncrease()
     startBarCount()
-    // playMusic()
     renderNextWord()
   }
 })
