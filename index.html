@@ -1,43 +1,61 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Typeandbeats by danchau88</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/danchau88/TypeAndBeats">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/danchau88/TypeAndBeats/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/danchau88/TypeAndBeats/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+  <!-- Google Fonts -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Exo:wght@700&family=Rajdhani:wght@500&family=Signika:wght@400;600&display=swap" 
+    rel="stylesheet"
+  >
+  <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/9155bfe459.js" crossorigin="anonymous"></script>
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
+  <!-- JS Files -->
+  <script src="script.js" defer></script>
+  <title>Type And Beats</title>
+</head>
+<body>
+  <header>
+    <h2> Type And Beats</h1>
+  </header>
+  <section class="basic-rules">
+    <div class="levels">
+      <button id="easy" onclick="easyMode()">EASY</button>
+      <button id="hard" onclick="hardMode()">HARD</button>
+      <button id="master" onclick="masterMode()">MASTER</button>
+    </div>
+    <div>
+    <label for="basic-rules">Basic Rules:</label>
+      <ul>
+        <li>Type the word present correctly before the timer ends.</li> 
+        <li>Survive 100 seconds to see your score. </li>
+        <li>Pick Level: Easy(default): 10sec | Hard: 7sec | Master: 5sec</li>
+        <li>Hone your typing skills and get as many words as you can, good luck!</li>
+      </ul>
+    </div>
+  </section>
+  <section class="game-container">
+    <div class="score">
+      <h3>Score: <span id="score-words">0</span></h3>
+      <h3>Time: <span id="score-time">0</span></h3>
+    </div>
 
     <div class="genre" id="mode-display">
       Easy (Default)
-     
+
       <audio id="audio1" loop="loop" preload="none">
         <source src="./music/The Raindrop Flower (Jazz Ver.)｜메이플스토리 (MapleStory) OST _ Jazz of Maple (192  kbps)(abdwap2.com).mp3" type="audio/mpeg">
       </audio>
-      
+  
       <audio id="audio2" loop="loop" preload="none">
         <source src="./music/3.24 Whack-a-Box.mp3" type="audio/mpeg">
       </audio>
-     
+
       <audio id="audio3" loop="loop" preload="none">
         <source src="./music/4.09 The Most Muscular.mp3" type="audio/mpeg">
       </audio>
@@ -47,6 +65,7 @@
       <h4>Time left:<span id="time-left"></span></h4>
       <div id="timer-bar" onclick="startBarCount()">
         <div id="timebar-left"></div>
+      
       </div>
       <div class="game-display" id="game-display"></div>
     </div>
@@ -68,6 +87,6 @@
       <a href="https://www.linkedin.com/in/daniel-chau-432718105/"><i class="fab fa-linkedin"></i></a>
       <span>Portfolio</span>
     </div>
-    
-  </body>
+  </footer>
+</body>
 </html>
