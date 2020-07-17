@@ -287,9 +287,14 @@ const getRandomWord = () => {
     .then(data => data[1])
 };
 
+let word;
 async function renderNextWord() {
   // bufferWord used to fix lag time
-  const word = bufferWord || await getRandomWord();
+  if (word === bufferWord) {
+    word = await getRandomWord(); 
+  } else {
+    word = bufferWord;
+  }
   wordDisplay.innerHTML = '';
   word.split('').forEach(element => {
     const character = document.createElement('span');
@@ -299,10 +304,10 @@ async function renderNextWord() {
   answerInput.value = null;
   // this is here to preload next word ahead of time
   bufferWord = await getRandomWord();
-  //double checks for duplicates
-  while (bufferWord === word) {
-    bufferWord = await getRandomWord() 
-  };
+  //double checks for duplicates --> still working on this bug
+  // while (bufferWord === word) {
+  //   bufferWord = await getRandomWord() 
+  // };
 };
 
 // Here to make sure that an initial word renders on reload
