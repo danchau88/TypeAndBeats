@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: url("spacebackground.jpg");
   background-color: #501537;
   font-family: 'Signika', sans-serif;
   height: 100vh;
@@ -28,8 +29,10 @@ body {
   font-family: 'Rajdhani', sans-serif;
   font-weight: bold;
   font-size: 15px;
+  width: 85px;
   padding: 5px;
-  margin-bottom: 5px; 
+  margin-top: 3.5px;
+  margin-bottom: 3.5px; 
   cursor: pointer;
   border-radius: 5px;
   border: none;
@@ -84,6 +87,7 @@ body {
 .score {
   color: aquamarine;
   font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
   font-weight: bold;
   display: flex;
   width: 85%;
@@ -111,12 +115,14 @@ body {
 
 .game-content h4 {
   color: darkgoldenrod;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .game-display {
   width: 90%;
   height: 75%;
-  font-size: 40px;
+  font-size: 43px;
   color: cornflowerblue;
   font-weight: bold;
   display: flex;
@@ -125,9 +131,12 @@ body {
 }
 
 .answer-input {
-  font-size: 25px;
+  border: none;
+  border-radius: 10px;
+  font-size: 28px;
   font-weight: bold;
   height: 30px;
+  padding: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
   border-radius: 5px;
@@ -161,6 +170,7 @@ footer {
 
 /* Timer Bar */
 #timer-bar {
+  position: relative;
   width: 500px;
   height: 120px;
   background: linear-gradient(to right, cornflowerblue, plum, #9EE493);
@@ -173,8 +183,10 @@ footer {
 }
 
 #timebar-left {
+  position: absolute;
+  right: 0;
   width: 0;
-  height: 120px;
+  height: 77px;
   border-radius: 10px;
   background-color: dimgrey;
 }

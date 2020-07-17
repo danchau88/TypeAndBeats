@@ -20,7 +20,7 @@ let score = 0;
 
 // Music Play functions
 function play1() {
-  audio_info1.volume = 0.7;
+  audio_info1.volume = 0.5;
   audio_info1.play();
 };
 
@@ -29,7 +29,7 @@ function stop1() {
 };
 
 function play2() {
-  audio_info2.volume = 0.7;
+  audio_info2.volume = 0.5;
   audio_info2.play();
 };
 
@@ -38,7 +38,7 @@ function stop2() {
 };
 
 function play3() {
-  audio_info3.volume = 0.7;
+  audio_info3.volume = 0.5;
   audio_info3.play();
 };
 
@@ -55,17 +55,29 @@ let innerDivBar = document.getElementById('timebar-left');
 let divTimerBar = document.getElementById('timer-bar');
 // Different lengths for difficulty settings
 
-let startTimer; 
-let amountTime;
+let startTimer;  
+let amountTime = 22; //bug here with the first input defaulting to this (works fine after finishing one word) FIXED
 function startBarCount() {
+  // fixed first input timebar bug
   if (master.className === 'selected') {
-    amountTime = 11;
+    amountTime = 12;
   } else if (hard.className === 'selected') {
-    amountTime = 17;
+    amountTime = 16;
   } else {
     amountTime = 22;
   }
-  innerDivBar.style.width = 0
+
+  if (startTimer) {
+    if (master.className === 'selected') {
+      amountTime = 12;
+    } else if (hard.className === 'selected') {
+      amountTime = 16;
+    } else {
+      amountTime = 22;
+    }
+    innerDivBar.style.width = 0
+    clearInterval(startTimer)
+  }
   startTimer = setInterval(barCount, amountTime);
   function barCount() {
     if (innerDivBar.clientWidth < divTimerBar.clientWidth) {
