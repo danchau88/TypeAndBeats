@@ -10,6 +10,8 @@ const wordScoreDisplay = document.getElementById('score-words');
 const easy = document.getElementById('easy');
 const hard = document.getElementById('hard');
 const master = document.getElementById('master');
+const minute = document.getElementById('minute');
+const regular = document.getElementById('regular');
 const modeDisplay = document.getElementById('mode-display');
 const muteButton = document.getElementById('sound-icon');
 
@@ -112,15 +114,15 @@ function startBarCount() {
 // Total Time Score
 function countStart() {
   counter = setInterval(() => {
-    timeScoreDisplay.innerHTML = currentTime
     currentTime++;
+    timeScoreDisplay.innerHTML = currentTime
   }, 1000)
 }
 
 // Total Words Score
 function scoreIncrease() {
-  wordScoreDisplay.innerHTML = score;
   score++;
+  wordScoreDisplay.innerHTML = score;
 }
 
 // Modes
@@ -148,6 +150,17 @@ function masterMode() {
   timeLeft = 5;
 }
 
+function minuteMode() {
+  minute.className = 'selected';
+  regular.className = '';
+}
+
+function regularMode() {
+  minute.className = '';
+  regular.className = 'selected';
+}
+
+// Filter Songs Played
 function playMusic() {
   if (master.className === 'selected') {
     play3();
@@ -204,11 +217,19 @@ let firstWord = true;
 //You Win Message
 let win;
 function youWin(){
-  win = setInterval(() => {
-    stopMusic();
-    alert(`You made it! Score: ${score}.`);
-    newGame();
-  }, 100000);
+  if (minute.className === 'selected') {
+    win = setInterval(() => {
+      stopMusic();
+      alert(`You made it! Score: ${score}.`);
+      newGame();
+    }, 60000);
+  } else {
+    win = setInterval(() => {
+      stopMusic();
+      alert(`You made it! Score: ${score}.`);
+      newGame();
+    }, 100000);
+  }
 }
 
 // Input match checker

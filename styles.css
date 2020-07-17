@@ -21,8 +21,20 @@ body {
 
 .levels {
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
+}
+
+.diff-level {
+  display: flex;
+  flex-direction: column;
+}
+
+.dur-level {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
 }
 
 .levels button {
@@ -51,6 +63,16 @@ body {
 #master:hover {
   color: mediumorchid;
   background-color: darkred;
+}
+
+#regular:hover {
+  color: #9B2915;
+  background-color: rgb(127, 197, 255);
+}
+
+#minute:hover {
+  color: #1D3354;
+  background-color: rgb(255, 127, 159);
 }
 
 .basic-rules {

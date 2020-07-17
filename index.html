@@ -25,15 +25,21 @@
   </header>
   <section class="basic-rules">
     <div class="levels">
-      <button id="easy" onclick="easyMode()">EASY</button>
-      <button id="hard" onclick="hardMode()">HARD</button>
-      <button id="master" onclick="masterMode()">MASTER</button>
+      <div class="diff-level">
+        <button id="easy" class="selected" onclick="easyMode()">EASY</button>
+        <button id="hard" onclick="hardMode()">HARD</button>
+        <button id="master" onclick="masterMode()">MASTER</button>
+      </div>
+      <div class="dur-level">
+        <button id="regular" class="selected" onclick="regularMode()">REGULAR</button>
+        <button id="minute" onclick="minuteMode()">MINUTE</button>
+      </div>
     </div>
     <div>
     <label for="basic-rules">Basic Rules:</label>
       <ul>
         <li>Type the word present correctly before the timer ends.</li> 
-        <li>Survive 100 seconds to see your score. </li>
+        <li>Survive 100 or 60 seconds to see your score (Regular(default)/Minute Mode). </li>
         <li>Pick Level: Easy(default): 10sec | Hard: 7sec | Master: 5sec</li>
         <li>Hone your typing skills and get as many words as you can, good luck!</li>
       </ul>
