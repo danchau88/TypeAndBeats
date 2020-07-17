@@ -42,6 +42,7 @@
   <section class="game-container">
     <div class="score">
       <h3>Score: <span id="score-words">0</span></h3>
+      <span id="mute-btn" onclick="muteAll()"><i id="sound-icon" class="fas fa-volume-up"></i></span>
       <h3>Time: <span id="score-time">0</span></h3>
     </div>
 
@@ -70,14 +71,14 @@
       <div class="game-display" id="game-display"></div>
     </div>
 
-    <input 
-      type="text" 
-      class="answer-input" 
-      id="answer-input" 
-      placeholder="Type here to start..."
-      autofocus
-    >
-    </input>
+      <input 
+        type="text" 
+        class="answer-input" 
+        id="answer-input" 
+        placeholder="Type here to start..."
+        autofocus
+      >
+      </input>
   </section>
 
   <footer>

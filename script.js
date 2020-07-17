@@ -11,6 +11,7 @@ const easy = document.getElementById('easy');
 const hard = document.getElementById('hard');
 const master = document.getElementById('master');
 const modeDisplay = document.getElementById('mode-display');
+const muteButton = document.getElementById('sound-icon');
 
 // changing global Variables
 let timeLeft = 10;
@@ -46,6 +47,24 @@ function stop3() {
   audio_info3.pause();
 };
 
+// Mute Button
+let muted = true;
+function muteAll() {
+  if (muted === false) {
+    audio_info1.volume = 0.5;
+    audio_info2.volume = 0.5;
+    audio_info3.volume = 0.5;
+    muteButton.className = "fas fa-volume-up";
+  } else {
+    audio_info1.volume = 0.0;
+    audio_info2.volume = 0.0;
+    audio_info3.volume = 0.0;
+    muteButton.className = "fas fa-volume-mute";
+  }
+  muted = !muted; 
+}
+
+// Reset Game 
 function newGame() {
   window.location.reload();
 }
@@ -237,7 +256,7 @@ answerInput.addEventListener('input', () => {
     countDown()
     scoreIncrease()
     startBarCount()
-    playMusic()
+    // playMusic()
     renderNextWord()
   }
 })

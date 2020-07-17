@@ -187,6 +187,11 @@ footer {
   background-color: dimgrey;
 }
 
+/* Mute Button */
+#sound-icon {
+  cursor: pointer;
+}
+
 /* Contact Info */
 .contact-info {
   display: flex;
