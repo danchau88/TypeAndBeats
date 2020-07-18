@@ -1,5 +1,5 @@
 # TypeThemBeats
-A fun short mini-game that tests your typing speed prowess!
+A fun short mini-game that tests your typing speed prowess along with great music!
 
 Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 
