@@ -23,7 +23,6 @@ let score = 0;
 
 // Music Play functions
 function play1() {
-  // audio_info1.volume = 0.0;
   audio_info1.play();
 };
 
@@ -32,7 +31,6 @@ function stop1() {
 };
 
 function play2() {
-  // audio_info2.volume = 0.0;
   audio_info2.play();
 };
 
@@ -41,7 +39,6 @@ function stop2() {
 };
 
 function play3() {
-  // audio_info3.volume = 0.0;
   audio_info3.play();
 };
 
@@ -50,7 +47,7 @@ function stop3() {
 };
 
 // Mute Button
-let muted = true;
+let muted = false;
 function muteMusic() {
   muted = true; 
   audio_info1.volume = 0.0;
@@ -61,9 +58,9 @@ function muteMusic() {
 
 function onMusic() {
   muted = false;
-  audio_info1.volume = 0.5;
-  audio_info2.volume = 0.5;
-  audio_info3.volume = 0.5;
+  audio_info1.volume = 0.35;
+  audio_info2.volume = 0.35;
+  audio_info3.volume = 0.35;
   muteButton.className = "fas fa-volume-up";
 }
 
@@ -246,7 +243,7 @@ answerInput.addEventListener('input', () => {
     countDown();
     startBarCount();
     countStart();
-    muted === true ? muteMusic() : onMusic();
+    !muted ? onMusic() : muteMusic();
     playMusic();
   }
 
