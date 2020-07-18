@@ -205,8 +205,8 @@ footer {
   right: 0;
   width: 0;
   height: 100%;
-  border-radius: 10px;
-  background-color: dimgrey;
+  border-radius: 2px;
+  background-color: #231F20;
 }
 
 /* Mute Button */

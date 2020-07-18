@@ -23,7 +23,7 @@ let score = 0;
 
 // Music Play functions
 function play1() {
-  audio_info1.volume = 0.5;
+  // audio_info1.volume = 0.0;
   audio_info1.play();
 };
 
@@ -32,7 +32,7 @@ function stop1() {
 };
 
 function play2() {
-  audio_info2.volume = 0.5;
+  // audio_info2.volume = 0.0;
   audio_info2.play();
 };
 
@@ -41,7 +41,7 @@ function stop2() {
 };
 
 function play3() {
-  audio_info3.volume = 0.5;
+  // audio_info3.volume = 0.0;
   audio_info3.play();
 };
 
@@ -51,19 +51,24 @@ function stop3() {
 
 // Mute Button
 let muted = true;
-function muteAll() {
-  if (muted === false) {
-    audio_info1.volume = 0.5;
-    audio_info2.volume = 0.5;
-    audio_info3.volume = 0.5;
-    muteButton.className = "fas fa-volume-up";
-  } else {
-    audio_info1.volume = 0.0;
-    audio_info2.volume = 0.0;
-    audio_info3.volume = 0.0;
-    muteButton.className = "fas fa-volume-mute";
-  }
-  muted = !muted; 
+function muteMusic() {
+  muted = true; 
+  audio_info1.volume = 0.0;
+  audio_info2.volume = 0.0;
+  audio_info3.volume = 0.0;
+  muteButton.className = "fas fa-volume-mute";
+}
+
+function onMusic() {
+  muted = false;
+  audio_info1.volume = 0.5;
+  audio_info2.volume = 0.5;
+  audio_info3.volume = 0.5;
+  muteButton.className = "fas fa-volume-up";
+}
+
+function soundToggle() {
+  muted === true ? onMusic() : muteMusic();
 }
 
 // Reset Game 
@@ -220,8 +225,8 @@ function countDown () {
       score = 0
       newGame();
     } 
-    timeLeftDisplay.innerHTML = timeLeft
     timeLeft -= 1
+    timeLeftDisplay.innerHTML = timeLeft
   }, 1000)
 }
 
@@ -241,15 +246,9 @@ answerInput.addEventListener('input', () => {
     countDown();
     startBarCount();
     countStart();
+    muted === true ? muteMusic() : onMusic();
     playMusic();
   }
-
-  //starts countDown
-  // if (firstWord) {
-  //   firstWord = false;
-  //   countStart();
-  //   countDown();
-  // }
 
   let correct = true;
   arrWord.forEach((charSpan, index) => {
