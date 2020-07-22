@@ -1,4 +1,4 @@
-const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?number=10";
+const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?swear=0";
 const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input');
 const timeLeftDisplay = document.getElementById('time-left');
@@ -26,25 +26,30 @@ function play1() {
   audio_info1.play();
 };
 
-function stop1() {
-  audio_info1.pause();
-};
-
 function play2() {
   audio_info2.play();
-};
-
-function stop2() {
-  audio_info2.pause();
 };
 
 function play3() {
   audio_info3.play();
 };
 
-function stop3() {
+// Filter Songs Played
+function playMusic() {
+  if (master.className === 'selected') {
+    play3();
+  } else if (hard.className === 'selected') {
+    play2();
+  } else {
+    play1();
+  }
+}
+
+function stopMusic() {
+  audio_info1.pause();
+  audio_info2.pause();
   audio_info3.pause();
-};
+}
 
 // Mute Button
 let muted = false;
@@ -145,7 +150,10 @@ function easyMode() {
   easy.className = 'selected';
   hard.className = '';
   master.className = '';
+  stopMusic();
+  clearInterval(timer);
   timeLeft = 10;
+  timeLeftDisplay.innerHTML = timeLeft
 }
 
 function hardMode() {
@@ -153,7 +161,10 @@ function hardMode() {
   easy.className = '';
   hard.className = 'selected';
   master.className = '';
+  stopMusic();
+  clearInterval(timer);
   timeLeft = 7;
+  timeLeftDisplay.innerHTML = timeLeft
 }
 
 function masterMode() {
@@ -161,12 +172,17 @@ function masterMode() {
   easy.className = '';
   hard.className = '';
   master.className = 'selected';
+  stopMusic();
+  clearInterval(timer);
   timeLeft = 5;
+  timeLeftDisplay.innerHTML = timeLeft
 }
 
 function minuteMode() {
   minute.className = 'selected';
   regular.className = '';
+  stopMusic();
+  clearInterval(timer);
   totalTimeLeft = 60;
   timeScoreDisplay.innerHTML = totalTimeLeft;
 }
@@ -174,29 +190,10 @@ function minuteMode() {
 function regularMode() {
   minute.className = '';
   regular.className = 'selected';
+  stopMusic();
+  clearInterval(timer);
   totalTimeLeft = 100;
   timeScoreDisplay.innerHTML = totalTimeLeft;
-}
-
-// Filter Songs Played
-function playMusic() {
-  if (master.className === 'selected') {
-    play3();
-  } else if (hard.className === 'selected') {
-    play2();
-  } else {
-    play1();
-  }
-}
-
-function stopMusic() {
-  if (master.className === 'selected') {
-    stop3();
-  } else if (hard.className === 'selected') {
-    stop2();
-  } else {
-    stop1();
-  }
 }
 
 let timer;
@@ -219,8 +216,15 @@ function countDown () {
       alert(`Try again to finish and get your score!`)
       clearInterval(timer)
       minute.className === 'selected' ? totalTimeLeft = 60 : totalTimeLeft = 100
+      if (master.className === "selected") {
+        timeLeft = 5
+      } else if (hard.className === "selected") {
+        timeLeft = 7
+      } else {
+        timeLeft = 10
+      }
       score = 0
-      newGame();
+      // newGame();
     } 
     timeLeft -= 1
     timeLeftDisplay.innerHTML = timeLeft
@@ -272,6 +276,7 @@ answerInput.addEventListener('input', () => {
     scoreIncrease()
     startBarCount()
     renderNextWord()
+    playMusic()
   }
 })
 
@@ -280,7 +285,7 @@ let bufferWord;
 const getRandomWord = () => {
   return fetch(RANDOM_WORD_API_URL)
     .then(response => response.json())
-    .then(data => data[1])
+    .then(data => data[0])
 };
 
 let word;
