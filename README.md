@@ -6,6 +6,7 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 #### Tools Used:
 * Language: Javascript
 * HTML5 and CSS
+* RandomWordAPI
 
 ### Basic Rules:
 * Type the word present correctly before the timer ends.

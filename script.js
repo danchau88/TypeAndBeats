@@ -1,6 +1,6 @@
 const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?swear=0";
 const wordDisplay = document.getElementById('game-display');
-const answerInput = document.getElementById('answer-input').focus(); //focus starts at input on load no need click
+const answerInput = document.getElementById('answer-input'); 
 const timeLeftDisplay = document.getElementById('time-left');
 const audio_info1 = document.getElementById('audio1');
 const audio_info2 = document.getElementById('audio2');
@@ -311,3 +311,14 @@ async function renderNextWord() {
 
 // Here to make sure that an initial word renders on reload
 renderNextWord();
+
+// TO start at input on load
+function startInput() {
+  answerInput.focus();
+
+  document.addEventListener('keydown', function() {
+    answerInput.focus();
+  });
+};
+
+startInput();
