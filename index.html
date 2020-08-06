@@ -10,15 +10,20 @@
     rel="stylesheet"
   >
   <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" href="favicon.png">
+
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/9155bfe459.js" crossorigin="anonymous"></script>
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="styles.css">
+
   <!-- JS Files -->
-  <script src="script.js" defer></script>
+  <!-- <script src="script.js" defer></script> -->
+
   <title>Type And Beats</title>
 </head>
 <body>
@@ -98,5 +103,40 @@
       <span>Portfolio</span>
     </div>
   </footer>
+
+  <!-- FIREBASE SCOREBOARD -->
+  <div class="sb-modal-bg">
+    <div class="scoreboard-content">
+      <div class="sb-board">
+        <h2 class="sb-title">Scoreboard</h2>
+        <!-- Display our Scoreboard here -->
+        <h3 class="top-5">Top 5 Hall of Fame</h3>
+        <table id="scoreboard">
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+        </table>
+      </div>
+      <div class="sb-input">
+        <h3>Score: <span id="score-score">0</span></h3>
+        <input id="name" type="text" placeholder="Enter your name...">
+        <button class="sb-save" onclick="saveScore()">Save Score</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+  <!-- Import Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+  <!-- Import our JavaScript file -->
+  <script src="script.js" defer></script>
+
 </body>
 </html>

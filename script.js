@@ -1,3 +1,22 @@
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDR9oXD6Oks6kkVLL82qVTz2z1OgiYiV9Q",
+  authDomain: "type-and-beats-scoreboard.firebaseapp.com",
+  databaseURL: "https://type-and-beats-scoreboard.firebaseio.com",
+  projectId: "type-and-beats-scoreboard",
+  storageBucket: "type-and-beats-scoreboard.appspot.com",
+  messagingSenderId: "446765257935",
+  appId: "1:446765257935:web:ce4b820f6498974788d3ba",
+  measurementId: "G-PQ4ED3P99H"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+// Setup access to the database
+let db = firebase.firestore();
+
 const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?swear=0";
 const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input'); 
@@ -316,9 +335,49 @@ renderNextWord();
 function startInput() {
   answerInput.focus();
 
-  document.addEventListener('keydown', function() {
-    answerInput.focus();
-  });
+  // document.addEventListener('keydown', function() {
+  //   answerInput.focus();
+  // });
 };
 
 startInput();
+
+
+//SCOREBOARD functions
+function saveScore() {
+  // Get name from input box
+  let name = document.getElementById('name').value;
+
+  // Make sure name has a value, if not send alert.
+  if(name !== "") {
+      // Add a new document in collection "scores"
+      db.collection("scores").doc().set({
+          name: name,
+          score: score
+      })
+      .then(function() {
+          console.log("Document successfully written!");
+          updateScores();
+      })
+      .catch(function(error) {
+          console.error("Error writing document: ", error);
+      });
+  } else {
+      alert('Please enter a name');
+  }
+}
+
+function updateScores() {
+  // Clear current scores in our scoreboard
+  document.getElementById('scoreboard').innerHTML = '<tr><th>Name</th><th>Score</th></tr>';
+  
+  // Get the top 5 scores from our scoreboard
+  db.collection("scores").orderBy("score", "desc").limit(5).get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+          document.getElementById('scoreboard').innerHTML += '<tr>' +
+          '<td>' + doc.data().name + '</td>' +
+          '<td>' + doc.data().score + '</td>' +
+          '</tr>';
+      })
+  })
+}

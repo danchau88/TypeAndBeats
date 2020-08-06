@@ -236,3 +236,70 @@ footer {
   color: #9EE493;
   margin: 8px;
 }
+
+/* SCOREBOARD */
+.sb-modal-bg { 
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.scoreboard-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: deepskyblue;
+  border-radius: 10px;
+  height: 50%;
+  width: 50%;
+}
+
+.sb-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 70%;
+}
+
+.top-5 {
+  background-color: goldenrod;
+  width: 75%;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+#scoreboard {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+#scoreboard tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+#scoreboard th {
+  padding-bottom: 5px;
+}
+
+.sb-save {
+  border-radius: 5px;
+  border: none;
+  background-color: indigo;
+  color: aliceblue;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 5px;
+}
