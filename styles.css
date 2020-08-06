@@ -8,6 +8,23 @@ header {
   color: blanchedalmond;
 }
 
+.title {
+  position: relative;
+}
+
+.sb-preview {
+  position: absolute;
+  margin-left: 40%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  background-color: turquoise;
+  color: #1D3354;
+  cursor: pointer;
+}
+
 body {
   display: flex;
   justify-content: center;

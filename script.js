@@ -384,4 +384,8 @@ function updateScores() {
   })
 }
 
+function displaySB() {
+  document.getElementById('sb-modal-bg').style.visibility = 'visible';
+}
+
 window.onload = updateScores();
