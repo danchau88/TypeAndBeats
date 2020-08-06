@@ -33,6 +33,7 @@ const minute = document.getElementById('minute');
 const regular = document.getElementById('regular');
 const modeDisplay = document.getElementById('mode-display');
 const muteButton = document.getElementById('sound-icon');
+const sbScoreDisplay = document.getElementById('score-score');
 
 // changing global Variables
 let timeLeft = 10;
@@ -145,6 +146,7 @@ function countStart() {
     timeScoreDisplay.innerHTML = totalTimeLeft
     if (totalTimeLeft < 0) {
       clearInterval(counter);
+      clearInterval(timer);
       youWin();
     };
   }, 1000)
@@ -153,14 +155,14 @@ function countStart() {
 //You Win Function
 function youWin() {
   stopMusic();
-  alert(`You made it! Score: ${score}.`);
-  newGame();
+  document.getElementById('sb-modal-bg').style.visibility = 'visible'
 }
 
 // Total Words Score
 function scoreIncrease() {
   score++;
   wordScoreDisplay.innerHTML = score;
+  sbScoreDisplay.innerHTML = score;
 }
 
 // Modes
@@ -347,18 +349,18 @@ startInput();
 function saveScore() {
   // Get name from input box
   let name = document.getElementById('name').value;
-
   // Make sure name has a value, if not send alert.
   if(name !== "") {
       // Add a new document in collection "scores"
       db.collection("scores").doc().set({
           name: name,
-          score: score
+          score: score,
       })
       .then(function() {
-          console.log("Document successfully written!");
+          // console.log("Document successfully written!");
           updateScores();
       })
+      .then(() => newGame())
       .catch(function(error) {
           console.error("Error writing document: ", error);
       });
@@ -381,3 +383,5 @@ function updateScores() {
       })
   })
 }
+
+window.onload = updateScores();
