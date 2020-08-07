@@ -296,6 +296,7 @@ footer {
   padding-bottom: 2px;
   display: flex;
   justify-content: center;
+  margin-bottom: 5px;
 }
 
 #scoreboard {
@@ -326,6 +327,7 @@ footer {
 .sb-save:hover {
   cursor: pointer;
   background-color: aquamarine;
+  color: darkolivegreen;
 }
 
 .sb-exit {
