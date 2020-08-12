@@ -1,5 +1,6 @@
 # TypeThemBeats
 ![TypeAndBeats Logo](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/TABlogo.PNG)
+
 A fun short mini-game that tests your typing speed prowess along with great music!
 
 Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
