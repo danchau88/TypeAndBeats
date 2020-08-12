@@ -1,4 +1,5 @@
 # TypeThemBeats
+![TypeAndBeats Logo](/READMEimg/TABlogo.png)
 A fun short mini-game that tests your typing speed prowess along with great music!
 
 Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
@@ -7,6 +8,7 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 * Language: Javascript
 * HTML5 and CSS
 * RandomWordAPI
+* Google Firebase
 
 ### Basic Rules:
 * Type the word present correctly before the timer ends.
@@ -23,6 +25,11 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 * Starts whenever you start typing in the "Type here to start" box.
 * Hone your typing skills and get as many words as you can, good luck!
 * **Note**: Don't worry about pressing enter when finishing the word, it should change automatically.
+![TypeAndBeats Logo](/READMEimg/TypeAndBeats1.png)
+
+### Scoreboard
+I implemented an intuitive scoreboard system using Google Firebase, a light-weight and efficient database, to keep track of scores saved. I also displayed the Top 5 of all time scores on the scoreboard to enhance competitive spirit.
+![TypeAndBeats Logo](/READMEimg/CaptureScoreboard.png)
 
 #### Copyright Stuff
 * I do not own any of the songs used.
