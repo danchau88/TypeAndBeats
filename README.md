@@ -29,6 +29,11 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 
 ![TypeAndBeats Home](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/TypeAndBeats1.PNG)
 
+### RandomWordAPI and Word Matcher
+* I increased the playability and smoothness of the typing experience to maximize reading and processing words by using a preloaded state of the next word to come after already waiting to stay a word ahead at all times. This reduced the possible lag/delay and bugs that would happen if you were to type too fast, eliminating a possible horrible issue.
+
+(coding pic here)
+
 ### Scoreboard
 I implemented an intuitive scoreboard system using Google Firebase, a light-weight and efficient database, to keep track of scores saved. I also displayed the Top 5 of all time scores on the scoreboard to enhance competitive spirit.
 
