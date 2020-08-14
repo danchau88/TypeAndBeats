@@ -1,5 +1,6 @@
 # TypeThemBeats
-![TypeAndBeats Logo](/READMEimg/TABlogo.png)
+![TypeAndBeats Logo](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/TABlogo.PNG)
+
 A fun short mini-game that tests your typing speed prowess along with great music!
 
 Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
@@ -25,11 +26,18 @@ Check it out here! [Live Link](https://danchau88.github.io/TypeAndBeats/)
 * Starts whenever you start typing in the "Type here to start" box.
 * Hone your typing skills and get as many words as you can, good luck!
 * **Note**: Don't worry about pressing enter when finishing the word, it should change automatically.
-![TypeAndBeats Home](/READMEimg/TypeAndBeats1.png)
+
+![TypeAndBeats Home](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/TypeAndBeats1.PNG)
+
+### RandomWordAPI and Word Generator
+* I increased the playability and smoothness of the typing experience to maximize reading and processing words by using a preloaded state of the next word to come after already waiting to stay a word ahead at all times. This reduced the possible lag/delay and bugs that would happen if you were to type too fast, eliminating a possible horrible issue.
+
+![TypeAndBeats script.js](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/TABcodesnippet1.PNG)
 
 ### Scoreboard
 I implemented an intuitive scoreboard system using Google Firebase, a light-weight and efficient database, to keep track of scores saved. I also displayed the Top 5 of all time scores on the scoreboard to enhance competitive spirit.
-![TypeAndBeats Scoreboard](/READMEimg/CaptureScoreboard.png)
+
+![TypeAndBeats Scoreboard](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/CaptureScoreboard.PNG)
 
 #### Copyright Stuff
 * I do not own any of the songs used.
