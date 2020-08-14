@@ -311,8 +311,7 @@ const getRandomWord = () => {
 
 let word;
 async function renderNextWord() {
-  // bufferWord used to fix lag time
-  // if statement here FIXES duplicate bugs when typing fast
+  
   if (word === bufferWord) {
     word = await getRandomWord(); 
   } else {
@@ -325,9 +324,8 @@ async function renderNextWord() {
     wordDisplay.appendChild(character);
   });
   answerInput.value = null;
-  // this is here to preload next word ahead of time
+  
   bufferWord = await getRandomWord();
-  //double checks for duplicates --> still working on this bug --> FIXED (line 294)
 };
 
 // Here to make sure that an initial word renders on reload
