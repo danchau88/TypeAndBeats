@@ -39,6 +39,9 @@ I implemented an intuitive scoreboard system using Google Firebase, a light-weig
 
 ![TypeAndBeats Scoreboard](https://github.com/danchau88/TypeAndBeats/blob/master/READMEimg/CaptureScoreboard.PNG)
 
+### Bonus Features (coming in the future)
+* Monthly Leaderboard for highscores
+
 #### Copyright Stuff
 * I do not own any of the songs used.
 * Backgroud Music Used:
