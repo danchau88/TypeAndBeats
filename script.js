@@ -1,3 +1,4 @@
+import {randomWords} from "./randomWordsLibrary"
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDR9oXD6Oks6kkVLL82qVTz2z1OgiYiV9Q",
@@ -17,7 +18,7 @@ firebase.analytics();
 // Setup access to the database
 let db = firebase.firestore();
 
-const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?swear=0";
+// const RANDOM_WORD_API_URL = "https://random-word-api.herokuapp.com/word?swear=0"; // not working atm
 const wordDisplay = document.getElementById('game-display');
 const answerInput = document.getElementById('answer-input'); 
 const timeLeftDisplay = document.getElementById('time-left');
@@ -305,9 +306,8 @@ answerInput.addEventListener('input', () => {
 let bufferWord;
 // RandomWord API Getter
 const getRandomWord = () => {
-  return fetch(RANDOM_WORD_API_URL)
-    .then(response => response.json())
-    .then(data => data[0])
+  let randomIndex = Math.floor(Math.random() * (randomWords.length - 1));
+  return randomWords[randomIndex];
 };
 
 let word;
