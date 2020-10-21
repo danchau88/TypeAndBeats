@@ -186,6 +186,7 @@ function hardMode() {
   clearInterval(timer);
   timeLeft = 7;
   timeLeftDisplay.innerHTML = timeLeft
+  console.log(randomWords())
 }
 
 function masterMode() {
