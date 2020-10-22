@@ -1,4 +1,4 @@
-import {randomWords} from "./randomWordsLibrary"
+// import randomWords from "./randomWordsLibrary"
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDR9oXD6Oks6kkVLL82qVTz2z1OgiYiV9Q",
@@ -307,6 +307,7 @@ let bufferWord;
 // RandomWord API Getter
 const getRandomWord = () => {
   let randomIndex = Math.floor(Math.random() * (randomWords.length - 1));
+  console.log(randomWords[randomIndex]);
   return randomWords[randomIndex];
 };
 
