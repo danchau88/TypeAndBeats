@@ -1,5 +1,5 @@
 class Dictionary{
-  generateRandomWords(){
+  generateRandomWords() {
       const randomWord = require('random-words');
       return randomWord();
   }
