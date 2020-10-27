@@ -310,7 +310,7 @@ let bufferWord;
 // RandomWord API Getter
 const getRandomWord = () => {
   let randomIndex = Math.floor(Math.random() * (randomWords.length - 1));
-  console.log(randomWords[randomIndex]);
+ 
   return randomWords[randomIndex];
 
   // let randomWord = new Dictionary;
